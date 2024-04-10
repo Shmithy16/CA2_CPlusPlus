@@ -21,3 +21,33 @@ std::pair<int, int> Bug::getPosition() const
 {
     return position;
 }
+int Bug::getDirection() const {
+    return direction;
+}
+int Bug::getSize() const {
+    return size;
+}
+bool Bug::getAlive() const {
+    return alive;
+}
+std::list<std::pair<int,int>> Bug::getPath() const {
+    return path;
+}
+void Bug::setId(int id){
+    this->id=id;
+}
+void Bug::setPosition(std::pair<int, int>){
+    this->position=position;
+};
+void Bug::setDirection(int direction) {
+    this->direction=direction;
+}
+void Bug::setSize(int size) {
+    this->size=size;
+}
+void Bug::setAlive(bool alive) {
+    this->alive=alive;
+}
+void Bug::setPath(std::list<std::pair<int, int>> path) {
+    this->path=path;
+}
