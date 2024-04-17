@@ -13,6 +13,32 @@ Bug::Bug(int id,std::pair<int, int> position,int direction,int size,bool alive,s
     this->path = path;
 }
 
+//1=North, 2=East, 3=South, 4=West
+bool Bug::isWayBlocked() {
+    switch(direction){
+        case 1:
+            if(position.second == 0){
+                return true;
+            }
+            break;
+        case 2:
+            if(position.first == 9){
+                return true;
+            }
+            break;
+        case 3:
+            if(position.second == 9){
+                return true;
+            }
+            break;
+        case 4:
+            if(position.second == 0){
+                return true;
+            }
+            break;
+    }
+}
+
 int Bug::getId() const
 {
     return id;

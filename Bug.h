@@ -18,9 +18,10 @@ protected:
     int size;
     bool alive;
     std::list<std::pair<int,int>> path;
+
 public:
-//    virtual std::move(){};
-    bool isBlockedWay(){};
+    virtual void move();
+    bool isWayBlocked();
     int getId() const;
     std::pair<int, int> getPosition() const;
     int getDirection() const;
