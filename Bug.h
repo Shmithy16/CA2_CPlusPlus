@@ -10,8 +10,9 @@
 
 class Bug {
 protected:
-    Bug(int id, std::pair<int, int> position, int direction, int size, bool alive, std::list<std::pair<int, int>> path);
+    Bug(int id, int x, int y, int direction, int size);
 
+    Bug();
     int id;
     std::pair<int, int> position;
     int direction;
@@ -20,6 +21,7 @@ protected:
     std::list<std::pair<int,int>> path;
 
 public:
+
     virtual void move();
     bool isWayBlocked();
     int getId() const;

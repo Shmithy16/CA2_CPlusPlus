@@ -7,7 +7,6 @@
 
 void Crawler::move(){
     while(Bug::isWayBlocked()){
-        srand (time(NULL));
         direction = rand() % 4 + 1;
     }
     //1=North, 2=East, 3=South, 4=West

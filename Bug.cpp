@@ -4,14 +4,25 @@
 
 #include "Bug.h"
 
-Bug::Bug(int id,std::pair<int, int> position,int direction,int size,bool alive,std::list<std::pair<int,int>> path){
+Bug::Bug(int id,int x, int y,int direction,int size){
     this->id = id;
-    this->position = position;
+    this->position.first = x;
+    this->position.second = y;
     this->direction = direction;
     this->size = size;
-    this->alive = alive;
-    this->path = path;
+    this->alive = true;
 }
+
+Bug::Bug(){
+    this->id = 1;
+    this->position.first = 0;
+    this->position.second = 0;
+    this->direction = 1;
+    this->size = 1;
+    this->alive = true;
+}
+
+
 
 //1=North, 2=East, 3=South, 4=West
 bool Bug::isWayBlocked() {
@@ -77,3 +88,4 @@ void Bug::setAlive(bool alive) {
 void Bug::setPath(std::list<std::pair<int, int>> path) {
     this->path=path;
 }
+
