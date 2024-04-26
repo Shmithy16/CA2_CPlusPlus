@@ -48,6 +48,7 @@ bool Bug::isWayBlocked() {
             }
             break;
     }
+    return false;
 }
 
 int Bug::getId() const
