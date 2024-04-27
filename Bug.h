@@ -23,6 +23,7 @@ protected:
 public:
 
     virtual void move() = 0;
+    virtual void display() = 0;
     bool isWayBlocked();
     int getId() const;
     std::pair<int, int> getPosition() const;

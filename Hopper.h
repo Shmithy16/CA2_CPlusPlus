@@ -10,13 +10,13 @@
 
 class Hopper: public Bug{
 private:
-    Hopper(int hopLength,int id,int x, int y, int direction, int size);
     int hopLength;
 
 public:
-
+    Hopper(int hopLength,int id,int x, int y, int direction, int size);
     int getHopLength();
     void move();
+    void display();
     void setHopLength(int hopLength);
 };
 

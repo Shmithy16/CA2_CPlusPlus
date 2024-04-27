@@ -5,6 +5,8 @@
 
 
 #include "Bug.h"
+#include "Crawler.h"
+#include "Hopper.h"
 
 void bugMain();
 
@@ -17,6 +19,11 @@ int main() {
     return 0;
 }
 
+int strToInt(string str) {
+    // https://cplusplus.com/reference/string/stoi/
+    return stoi(str);
+}
+
 void bugMain(){
     vector<Bug*> bug_vector;
     string line;
@@ -25,19 +32,60 @@ void bugMain(){
     if(fin)
     {
         while(!fin.eof()) {
-            fin >> line;
-            string type = line.substr(0,1);
-            cout << type << endl;
-            if(type == "C"){
-                string id = line.substr(2,line.find(delimiter,2)-2);
-                string x = line.substr(6,line.find(delimiter));
-                string y = line.substr(8,line.find(delimiter));
-                string dir = line.substr(10,line.find(delimiter));
-                string size = line.substr(12,line.find(delimiter)+1);
-                cout << size << endl;
+            getline(fin,line);
+            if(line.length() > 0) {
+                string type = line.substr(0,1);
+                line = line.substr(2);
+
+                string str = line.substr(0,line.find(";"));
+                int id = strToInt(str);
+
+                line = line.substr(line.find(";")+1, line.length());
+                str = line.substr(0,line.find(delimiter));
+                int x = strToInt(str);
+
+                line = line.substr(line.find(";")+1, line.length());
+                str = line.substr(0,line.find(delimiter));
+                int y = strToInt(str);
+
+                line = line.substr(line.find(";")+1, line.length());
+                str = line.substr(0,line.find(delimiter));
+                int dir = strToInt(str);
+
+                line = line.substr(line.find(";")+1, line.length());
+                str = line.substr(0,line.find(delimiter));
+                int size = strToInt(str);
+
+                if(type == "C"){
+                   // bug_vector.push_back(new Crawler(id,x,y,dir,size));
+                   Crawler *cr = new Crawler(id, x, y, dir, size);
+                    cr->display();
+                    bug_vector.push_back(cr);
+                }
+                else if(type == "H") {
+                    line = line.substr(line.find(";")+1, line.length());
+                    str = line.substr(0,line.find(delimiter));
+                    int hopL = strToInt(str);
+
+                    // bug_vector.push_back(new Hopper(hopL,id,x,y,dir,size));
+                    Hopper *hp = new Hopper(hopL, id, x, y, dir, size);
+                    hp->display();
+                    bug_vector.push_back(hp);
+                }
+            }
+        }
+        int input;
+            cout << "Input a number for an id: " << endl;
+            cin >> input;
+        std::vector<Bug*>::iterator it;
+        for (it = bug_vector.begin(); it != bug_vector.end(); it++) {
+            if((*it)->getId() == input) {
+                (*it)->display();
             }
 
         }
+
+
         fin.close();
     }
     else

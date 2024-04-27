@@ -38,3 +38,27 @@ void Hopper::move(){
         }
     }
 }
+
+void Hopper::display() {
+    std::string dirName;
+    switch(direction){
+        case 1:
+            dirName = "North";
+        break;
+        case 2:
+            dirName = "East";
+        break;
+        case 3:
+            dirName = "South";
+        break;
+        case 4:
+            dirName = "West";
+        break;
+    }
+    std::string status;
+    if(alive)
+        status = "Alive";
+    else
+        status = "Dead";
+    std::cout << "Hopper " <<"id: "<< id <<" ("<< position.first <<","<< position.second <<") "<< dirName <<" Size: "<< size <<" Hop Length: " << hopLength <<" "<< status << std::endl;
+}
