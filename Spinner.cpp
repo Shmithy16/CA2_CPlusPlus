@@ -1,10 +1,11 @@
 //
-// Created by d00257746 on 17/04/2024.
+// Created by user on 28/04/2024.
 //
 
-#include "Crawler.h"
+#include "Spinner.h"
 
-Crawler::Crawler(int id,int x, int y,int direction,int size){
+
+Spinner::Spinner(int id, int x, int y, int direction, int size) {
     this->id = id;
     this->position.first = x;
     this->position.second = y;
@@ -12,28 +13,31 @@ Crawler::Crawler(int id,int x, int y,int direction,int size){
     this->size = size;
 }
 
-void Crawler::move(){
+void Spinner::move(){
     while(Bug::isWayBlocked()){
         direction = rand() % 4 + 1;
     }
-    //1=North, 2=East, 3=South, 4=West
     switch(direction){
         case 1:
             position.second--;
-            break;
+            direction = rand() % 4 + 1;
+        break;
         case 2:
             position.first++;
-            break;
+            direction = rand() % 4 + 1;
+        break;
         case 3:
             position.second++;
-            break;
+            direction = rand() % 4 + 1;
+        break;
         case 4:
             position.first--;
-            break;
+            direction = rand() % 4 + 1;
+        break;
     }
     path.push_back(position);
 }
-void Crawler::display() {
+void Spinner::display() {
     std::string dirName;
     switch(direction){
         case 1:
@@ -54,5 +58,5 @@ void Crawler::display() {
         status = "Alive";
     else
         status = "Dead";
-    std::cout << "Crawler " <<"id: "<< id <<" ("<< position.first <<","<< position.second <<") "<< dirName <<" Size: "<< size <<" " <<  status << std::endl;
+    std::cout << "Spinner  " <<"id: "<< id <<" ("<< position.first <<","<< position.second <<") "<< dirName <<" Size: "<< size <<" " <<  status << std::endl;
 }

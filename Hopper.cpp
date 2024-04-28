@@ -37,6 +37,7 @@ void Hopper::move(){
             }
         }
     }
+    path.push_back(position);
 }
 
 void Hopper::display() {

@@ -43,7 +43,7 @@ bool Bug::isWayBlocked() {
             }
             break;
         case 4:
-            if(position.second == 0){
+            if(position.first == 0){
                 return true;
             }
             break;
